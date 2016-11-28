@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var school_dal = require('../model/school_dal');
+var school_dal = require('../model/school_dal.js');
 
 
 // View All schools
