@@ -4,13 +4,22 @@
 </head>
 <body>
 <h1>Resume</h1>
+<a href="/resume/add">Add New Resume</a> <br />
+
+<br />
+
 <table border="1">
-    <tr><th>Resume ID</th><th>Name</th><th>resume_name</th></tr>
+    <tr></th><th>Resume Name</th><th>Person Name</th></tr>
     <% for(var i=0; result.length > i; i++ ) { %>
     <tr>
+
         <td><%= result[i].resume_id%></td>
-        <td><a href="/resume/?resume_id=<%= result[i].resume_id %>"><%= result[i].resume_name %></a></td>
-        <td><%= result[i].resume_name %></td>
+        <td><a href="/resume/?resume_name=<%= result[i].resume_name%>"><%= result[i].last_name%>, <%= result[i].first_name%></a></td>
+        <td><form action="/resume/delete/">
+                <input type="hidden" name="resume_id" id="resume_id" value="<%= result[i].resume_id %>" />
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
     </tr>
     <% } %>
 </table>

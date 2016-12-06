@@ -12,11 +12,34 @@ exports.getAll = function(callback) {
     });
 };
 
-exports.getById = function(account_id, callback) {
+exports.getById = function(skill_id, callback) {
     var query = 'SELECT * FROM skill WHERE skill_id = ?';
     var queryData = [skill_id];
 
     connection.query(query, queryData, function(err, result) {
         callback(err, result);
     });
+}
+
+exports.insert = function(params, callback) {
+    var query = 'INSERT INTO skill (name, description) VALUES (?, ?)';
+
+    // the question marks in the sql query above will be replaced by the values of the
+    // the data in queryData
+    var queryData = [params.name, params.description];
+
+    connection.query(query, queryData, function (err, result) {
+        callback(err, result);
+    });
+
+}
+
+exports.delete = function(skill_id, callback) {
+    var query = 'DELETE FROM skill WHERE skill_id = ?';
+    var queryData = [skill_id];
+
+    connection.query(query, queryData, function(err, result) {
+        callback(err, result);
+    });
+
 };
